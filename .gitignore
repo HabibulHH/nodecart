@@ -50,5 +50,4 @@ mongodb.conf
 *.ntvs*
 *.njsproj
 *.sln
-
 # Courtesy of https://github.com/meanjs/mean/blob/master/.gitignore
