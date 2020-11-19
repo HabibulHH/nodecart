@@ -14,7 +14,7 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "hotload" :" nodemon ./server.js localhost 8080"
+    "hotload": " nodemon ./server.js localhost 8080"
   },
   "repository": {
     "type": "git",
