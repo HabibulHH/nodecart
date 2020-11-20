@@ -2,9 +2,10 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const userRouter = require("./routes/user");
 require("./db/mongoConnect");
 
-const port = 4004;
+const port = 4005;
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use("/", index);
+app.use(userRouter);
 
 app.listen(port, function () {
   console.log(`Server started...${port}`);
