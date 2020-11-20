@@ -1,10 +1,10 @@
 const express = require("express");
-
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require("./db/mongoConnect");
 
-const port = 4000;
+const port = 4004;
 
 const app = express();
 
