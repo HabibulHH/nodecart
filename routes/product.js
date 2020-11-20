@@ -6,7 +6,7 @@ const router = new express.Router();
 /**
  * Responsible to return all products
  */
-router.get("/products", async (req, res, next) => {
+router.get("/products", async (req, res) => {
   const products = await Product.find({});
   res.send(products);
 });
@@ -14,7 +14,7 @@ router.get("/products", async (req, res, next) => {
 /**
  * Responsible to create a product
  */
-router.post("/product", async (req, res, next) => {
+router.post("/product", async (req, res) => {
   const product = new Product(req.body);
   try {
     await product.save();
@@ -27,8 +27,8 @@ router.post("/product", async (req, res, next) => {
 /**
  * Responsible to delete all products
  */
-router.put("/delete", async (req, res, next) => {
-  const products = await Product.deleteMany({});
+router.put("/delete", async (req, res) => {
+  await Product.deleteMany({});
   res.status(201).send({ message: "All Product Deleted" });
 });
 
