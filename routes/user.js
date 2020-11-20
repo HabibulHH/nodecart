@@ -38,4 +38,13 @@ router.post("/users/login", async (req, res) => {
   }
 });
 
+router.get("/health", async (req, res) => {
+  res.send("running");
+});
+
+router.get("/getallusers", async (req, res) => {
+  const filter = {};
+  const all = await User.find(filter);
+  res.send(all);
+});
 module.exports = router;
