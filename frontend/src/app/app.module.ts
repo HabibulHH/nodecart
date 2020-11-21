@@ -10,6 +10,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog'
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,21 +20,25 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     ProductDetailsComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatDialogModule,
     RouterModule.forRoot(
       [{path :'',component:LoginComponent},
       {path :'cart',component:CartComponent},
       {path :'product-details',component:ProductDetailsComponent},
       {path :'products',component:ProductListComponent},
   
-  ])
+  ]),
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ModalComponent]
 })
 export class AppModule { }
