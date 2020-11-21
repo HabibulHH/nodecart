@@ -29,9 +29,6 @@ export class ProductListComponent implements OnInit {
       }
     });
   }
-  closeDialog() {
-    localStorage.clear();
-   }
-  
+
 
 }

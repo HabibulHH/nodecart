@@ -1,3 +1,6 @@
-<p>
-  cart works!
-</p>
+<div *ngFor="let product of selectedProducts">
+  <p>
+    {{ product.name }} - {{ product.price }}- {{ product.size }}-
+    {{ product.quantity }} - {{ product.color }} -- {{ product.price }}
+  </p>
+</div>

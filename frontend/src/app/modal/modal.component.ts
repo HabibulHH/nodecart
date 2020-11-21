@@ -36,9 +36,8 @@ export class ModalComponent implements OnInit {
     
   }
 
-  addItem(value,product,variants){
-
-    let takenItemCount =  localStorage.getItem(variants._id) || 0;
+  addItem(value,product,variants,size){
+    let takenItemCount = localStorage.getItem(variants._id) || 0;
     console.log(takenItemCount,'from local storage');
     
     if(product.available){
@@ -47,13 +46,18 @@ export class ModalComponent implements OnInit {
     {
       let updatedCount = parseInt(inputValue)>=0? parseInt(inputValue)+ 1: 0;
       document.getElementById(value).value = updatedCount;
-      localStorage.setItem(variants._id,updatedCount);
+      localStorage.setItem(variants._id ,updatedCount);
+
+      localStorage.setItem(variants._id+'pro'+size,JSON.stringify({
+        updatedCount:updatedCount,color:variants.color,size : size, name:product.name, price: product.price
+      }));
+    
     }else
       alert('Product Is not available');
     }
     else{
       alert("Product is not available");
     }
-    console.log(product);
  }
 }
+
