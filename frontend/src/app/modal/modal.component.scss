@@ -1,0 +1,65 @@
+.modalcss{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px;
+}
+
+hr{
+  border-top: 2px solid rgba(0,0,0,.1);
+  margin: 5px 5px 7px 0px;
+}
+
+.sizes{
+  padding-left: 20px;
+  li{
+    list-style: none;
+    padding: none;
+    margin: none;
+  }
+
+span {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  padding: 3px;
+  font-size: 12px;
+  margin-left: 4px;
+}
+.number{
+ display: flex;
+ flex-direction: row;
+}
+.minus, .plus{
+  width:20px;
+  height:20px;
+  background:#f2f2f2;
+  border-radius:4px;
+  padding: 0px 5px 10px 5px;
+  border:1px solid #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+input{
+  height:20px;
+  width: 40px;
+  text-align: center;
+  font-size: 12px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+}
+
+.variants{
+  padding-left: 10px;
+  li.name{
+    text-transform: uppercase;
+    input { cursor: pointer;}
+  }
+ 
+}
+

@@ -1,0 +1,31 @@
+<div class="col">
+  <div class="row">
+    <div *ngFor="let product of products" class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <img
+          class="card-img-top"
+          src="https://dummyimage.com/600x400/55595c/fff"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="product.html" title="View Product">{{ product.name }}</a>
+          </h4>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+          <div class="row">
+            <div class="col">
+              <p class="btn btn-danger btn-block">{{ product.price }} $</p>
+            </div>
+            <div class="col">
+              <a (click)="openDialog(product)" class="btn btn-success btn-block"
+                >Add to cart</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
