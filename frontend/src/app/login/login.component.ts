@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   password:string;
   email:string;
   last_name:string;
+  email_signIn: string;
+  password_signIn:string;
   ngOnInit() {
   }
   register(){
@@ -22,6 +24,13 @@ export class LoginComponent implements OnInit {
      email:this.email,
      last_name:this.last_name
     });
+  }
+
+  signIn(){
+    this.loginService.signInUser({
+      email:this.email_signIn,
+      password:this.password_signIn
+     });
   }
 
 }

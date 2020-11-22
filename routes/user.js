@@ -10,12 +10,11 @@ const router = new express.Router();
  */
 router.post("/register", async (req, res) => {
   const user = new User(req.body);
-  console.log("came ree");
+
   try {
     await user.save();
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
-    console.log("created");
   } catch (e) {
     res.status(400).send(e);
   }
@@ -26,15 +25,18 @@ router.post("/register", async (req, res) => {
  * @param req
  * @param res
  */
-router.post("/users/login", async (req, res) => {
+router.post("/login", async (req, res) => {
+  console.log("came ree");
   try {
     const user = await User.findByCredentials(
       req.body.email,
       req.body.password
     );
+    //console.log("came ree");
     const token = await user.generateAuthToken();
     res.send({ user, token });
   } catch (e) {
+    console.log("came ree");
     res.status(400).send();
   }
 });
