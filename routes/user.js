@@ -8,7 +8,7 @@ const router = new express.Router();
  * @param req
  * @param res
  */
-router.post("/users", async (req, res) => {
+router.post("/register", async (req, res) => {
   const user = new User(req.body);
 
   try {
@@ -25,15 +25,18 @@ router.post("/users", async (req, res) => {
  * @param req
  * @param res
  */
-router.post("/users/login", async (req, res) => {
+router.post("/login", async (req, res) => {
+  console.log("came ree");
   try {
     const user = await User.findByCredentials(
       req.body.email,
       req.body.password
     );
+    //console.log("came ree");
     const token = await user.generateAuthToken();
     res.send({ user, token });
   } catch (e) {
+    console.log("came ree");
     res.status(400).send();
   }
 });

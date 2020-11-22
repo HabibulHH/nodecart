@@ -4,28 +4,38 @@
   <div class="box">
     <input type="checkbox" id="toggle" class="box__toggle" hidden />
     <img
-      src="https://www.dropbox.com/s/u1hx11933jjk7j5/unsplash-bike.jpeg?raw=1"
+      src="../../assets/unsplash-bike.jpeg"
       alt="Picture by Autumn Studio"
       class="box__image"
     />
-    <form class="form form--register" action="">
+    <div class="form form--register">
       <h1 class="form__title">Sign up</h1>
 
       <div class="form__helper">
         <input
           type="text"
           name="user"
-          id="new-user"
-          placeholder="User"
+          [(ngModel)]="name"
+          placeholder="First name"
           class="form__input"
         />
         <label class="form__label" for="new-user">User</label>
       </div>
-
+      <div class="form__helper">
+        <input
+          type="text"
+          name="user_last"
+          [(ngModel)]="last_name"
+          placeholder="Last Name"
+          class="form__input"
+        />
+        <label class="form__label" for="new-user">User</label>
+      </div>
       <div class="form__helper">
         <input
           type="email"
           name="email"
+          [(ngModel)]="email"
           id="email"
           placeholder="Email"
           class="form__input"
@@ -37,6 +47,7 @@
         <input
           type="password"
           name="password"
+          [(ngModel)]="password"
           id="new-user-password"
           placeholder="Password"
           class="form__input"
@@ -48,6 +59,7 @@
         <input
           type="password"
           name="password"
+          [(ngModel)]="cpassword"
           id="confirm-password"
           Placeholder="Confirm password"
           class="form__input"
@@ -57,26 +69,27 @@
         >
       </div>
 
-      <button type="submit" class="form__button">Register</button>
+      <button class="form__button" (click)="register()">Register</button>
 
       <p class="form__text">
         Already have an account?
         <label for="toggle" class="form__link">Sign in!</label>
       </p>
-    </form>
+    </div>
 
-    <form class="form form--login" action="">
+    <div class="form form--login" action="">
       <h1 class="form__title">Sign in</h1>
 
       <div class="form__helper">
         <input
-          type="text"
-          name="user"
-          id="user"
-          placeholder="User"
+          type="email"
+          name="emails"
+          id="emails"
+          [(ngModel)]="email_signIn"
+          placeholder="emails"
           class="form__input"
         />
-        <label class="form__label" for="user">User</label>
+        <label class="form__label" for="emails">Email</label>
       </div>
 
       <div class="form__helper">
@@ -84,18 +97,19 @@
           type="password"
           name="password"
           id="password"
+          [(ngModel)]="password_signIn"
           placeholder="Password"
           class="form__input"
         />
         <label class="form__label" for="password">Password</label>
       </div>
 
-      <button type="submit" class="form__button">Login</button>
+      <button (click)="signIn()" class="form__button">Login</button>
 
       <p class="form__text">
         Don't have an account?
         <label for="toggle" class="form__link">Sign up!</label>
       </p>
-    </form>
+    </div>
   </div>
 </div>
