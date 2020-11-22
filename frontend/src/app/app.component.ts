@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { HostListener, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+
+  @HostListener('window:beforeunload') goToPage() {
+    //this.router.navigate(['/hello']);
+    localStorage.clear();
+    
+  }
+  title = 'E-Com';
 }

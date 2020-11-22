@@ -5,7 +5,7 @@ import { Component, OnInit , Inject} from '@angular/core';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.sass']
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
 
@@ -38,9 +38,12 @@ export class CartComponent implements OnInit {
             }
             else
             product.updatedCount = data.updatedCount = data.updatedCount;
-          }
-          
+          } 
         }
       );
+   }
+   clear(){
+     localStorage.clear();
+     location.reload();
    }
 }
