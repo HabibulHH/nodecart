@@ -1,7 +1,5 @@
 <h1 mat-dialog-title>Chose colors and size</h1>
 <hr />
-
-<dir>{{ test }}</dir>
 <div mat-dialog-content class="modalcss">
   <ul class="variants">
     <li class="name" *ngFor="let item of data.product.variants">
@@ -29,7 +27,7 @@
               <input id="{{ item._id + itm }}" type="text" value="0" />
               <span
                 class="plus"
-                (click)="addItem(item._id + itm, data.product, item, itm)"
+                (click)="addItem(item._id + itm, data.product, item, itm, size)"
                 >+</span
               >
             </div>

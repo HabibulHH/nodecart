@@ -27,14 +27,22 @@ export class ModalComponent implements OnInit {
 
   }
   
-  removeItem(value,product,variants){
+  removeItem(value,product,variants,size){
 
      let inputValue = document.getElementById(value).value;
      if(product.available){
       let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
       document.getElementById(value).value = updatedCount;
       localStorage.setItem(variants._id,updatedCount);
-      this.dataStore.cartItemCounter.emit(updatedCount);
+
+     // this.dataStore.cartItemCounter.emit(updatedCount);
+
+      let customVarId = variants._id+'pro'+size;
+      this.cartService.RemoveItemFromCart.emit({
+        variant_id : customVarId ,
+        product_id : product._id, 
+        updatedCount:updatedCount,
+      });
      }
      else{
        alert("Product is not available");
@@ -53,12 +61,8 @@ export class ModalComponent implements OnInit {
       let updatedCount = parseInt(inputValue)>=0? parseInt(inputValue)+ 1: 0;
       document.getElementById(value).value = updatedCount;
       localStorage.setItem(variants._id ,updatedCount);
-
-      localStorage.setItem(variants._id+'pro'+size,JSON.stringify({
-        updatedCount:updatedCount,color:variants.color,size : size, name:product.name, price: product.price
-      }));
       
-      this.dataStore.cartItemCounter.emit(updatedCount);
+      //this.dataStore.cartItemCounter.emit(updatedCount);
       let customVarId = variants._id+'pro'+size;
       this.cartService.AddItemToCart.emit({
         variant_id : customVarId ,

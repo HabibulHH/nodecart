@@ -8,4 +8,5 @@ export class CartService {
   constructor() { }
 
   public AddItemToCart: EventEmitter<any> = new EventEmitter<any>();
+  public RemoveItemFromCart: EventEmitter<any> = new EventEmitter<any>();
 }
