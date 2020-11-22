@@ -8,13 +8,14 @@ const router = new express.Router();
  * @param req
  * @param res
  */
-router.post("/users", async (req, res) => {
+router.post("/register", async (req, res) => {
   const user = new User(req.body);
-
+  console.log("came ree");
   try {
     await user.save();
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
+    console.log("created");
   } catch (e) {
     res.status(400).send(e);
   }

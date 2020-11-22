@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './cart-modal/cart-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog'
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import {MatDialogModule} from '@angular/material/dialog'
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
+    FormsModule,
     RouterModule.forRoot(
       [{path :'',component:LoginComponent},
       {path :'cart',component:CartComponent},
