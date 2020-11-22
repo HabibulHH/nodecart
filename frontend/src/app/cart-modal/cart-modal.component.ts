@@ -59,7 +59,7 @@ export class ModalComponent implements OnInit {
       }));
       
       this.dataStore.cartItemCounter.emit(updatedCount);
-      let customVarId = variants._id+'pro'+'size';
+      let customVarId = variants._id+'pro'+size;
       this.cartService.AddItemToCart.emit({
         variant_id : customVarId ,
         product_id : product._id, 

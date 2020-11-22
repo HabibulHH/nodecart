@@ -1,28 +1,23 @@
 <div class="mb-3">
   <div class="pt-4">
-    <h5 class="mb-3">The total amount of</h5>
-
-    <ul class="list-group list-group-flush">
-      <li
-        class="list-group-item d-flex justify-content-between align-items-center px-0"
-      >
-        Shipping
-        <span>Units</span>
-        <span>Price</span>
-      </li>
-      <li
-        *ngFor="let product of selectedProducts"
-        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
-      >
-        {{ product.name }} - {{ product.size }}
-        {{ product.color }}
-        <span>{{ product.updatedCount }} </span>
-        <span>${{ product.price }}</span>
-      </li>
-    </ul>
-
+    <table class="table table-borderless">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Unit</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of selectedProducts">
+          <td>{{ product.name }} - {{ product.size }} - {{ product.color }}</td>
+          <td>{{ product.updatedCount }}</td>
+          <td>${{ product.price }}</td>
+        </tr>
+      </tbody>
+    </table>
     <button type="button" class="btn btn-primary btn-block">
-      go to checkout
+      Go To Checkout
     </button>
   </div>
 </div>
