@@ -1,6 +1,6 @@
+import { CartService } from './../services/cart.service';
 import { Variants } from './../models/Products';
 import { Component, OnInit , Inject} from '@angular/core';
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -8,17 +8,22 @@ import { Component, OnInit , Inject} from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
+  constructor(private cartService: CartService){}
    selectedProducts : Array<object> = [];
    selectedVariants: Array<object> = [];
+   test =''
   ngOnInit() {
-      let keys = Object.keys(localStorage),
-      i = keys.length;
-      while ( i-- ) {
-        if(keys[i].includes('pro')){
-          let viewModel = JSON.parse(localStorage.getItem(keys[i]));
-          this.selectedProducts.push(viewModel);   
+    this.cartService.AddItemToCart
+      .pipe()
+      .subscribe((data) => {
+        let product = this.selectedProducts.find(item => item.variant_id  == data.variant_id );
+          if(product){
+            product.updatedCount = data.updatedCount;
+          }
+          else{
+            this.selectedProducts.push(data);
+          }
         }
-     }
-  }
-
+      );
+   }
 }

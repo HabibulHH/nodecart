@@ -1,5 +1,5 @@
 import { Product, Variants } from './../models/Products';
-import { ModalComponent } from './../modal/modal.component';
+import { ModalComponent } from './../cart-modal/cart-modal.component';
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../product.service";
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';

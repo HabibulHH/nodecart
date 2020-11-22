@@ -1,6 +1,8 @@
+import { Variants } from './../models/Products';
 import { DataStoreService } from '../data-store.service';
 import { Component, OnInit , Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CartService } from '../services/cart.service';
 
 
 export interface DialogData {
@@ -10,12 +12,15 @@ export interface DialogData {
 }
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  templateUrl: './cart-modal.component.html',
+  styleUrls: ['./cart-modal.component.scss']
 })
 export class ModalComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dataStore:DataStoreService ) {}
+  constructor(@Inject(MAT_DIALOG_DATA) 
+  public data: any, 
+  private dataStore:DataStoreService , 
+  private cartService:CartService) {}
 
   
   ngOnInit() {
@@ -29,6 +34,7 @@ export class ModalComponent implements OnInit {
       let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
       document.getElementById(value).value = updatedCount;
       localStorage.setItem(variants._id,updatedCount);
+      this.dataStore.cartItemCounter.emit(updatedCount);
      }
      else{
        alert("Product is not available");
@@ -53,7 +59,16 @@ export class ModalComponent implements OnInit {
       }));
       
       this.dataStore.cartItemCounter.emit(updatedCount);
-    
+      let customVarId = variants._id+'pro'+'size';
+      this.cartService.AddItemToCart.emit({
+        variant_id : customVarId ,
+        product_id : product._id, 
+        updatedCount:updatedCount,
+        color:variants.color,
+        size : size, 
+        name:product.name, 
+        price: product.price
+      });
     }else
       alert('Product Is not available');
     }
