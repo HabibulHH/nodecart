@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
     })  
   }
   openDialog(product) {
-    localStorage.clear();
+    //localStorage.clear();
     this.dialog.open(ModalComponent, {
       data: {
        product:  product

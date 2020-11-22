@@ -1,7 +1,7 @@
-import { Variants } from './../models/Products';
+import { DataStoreService } from '../data-store.service';
 import { Component, OnInit , Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { count } from 'console';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 export interface DialogData {
   color: String,
@@ -15,7 +15,7 @@ export interface DialogData {
 })
 export class ModalComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any ) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dataStore:DataStoreService ) {}
 
   
   ngOnInit() {
@@ -26,7 +26,7 @@ export class ModalComponent implements OnInit {
 
      let inputValue = document.getElementById(value).value;
      if(product.available){
-      let updatedCount = parseInt(inputValue)>=0? parseInt(inputValue) - 1: 0;
+      let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
       document.getElementById(value).value = updatedCount;
       localStorage.setItem(variants._id,updatedCount);
      }
@@ -38,7 +38,7 @@ export class ModalComponent implements OnInit {
 
   addItem(value,product,variants,size){
     let takenItemCount = localStorage.getItem(variants._id) || 0;
-    console.log(takenItemCount,'from local storage');
+    //console.log(takenItemCount,'from local storage');
     
     if(product.available){
     let inputValue = document.getElementById(value).value;
@@ -51,6 +51,8 @@ export class ModalComponent implements OnInit {
       localStorage.setItem(variants._id+'pro'+size,JSON.stringify({
         updatedCount:updatedCount,color:variants.color,size : size, name:product.name, price: product.price
       }));
+      
+      this.dataStore.cartItemCounter.emit(updatedCount);
     
     }else
       alert('Product Is not available');
