@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Chose colors and size</h1>
+<h1 mat-dialog-title>Choose colors and size</h1>
 <hr />
 <div mat-dialog-content class="modalcss">
   <ul class="variants">
@@ -10,6 +10,8 @@
           name="exampleRadios"
           id="exampleRadios1"
           value="option1"
+          disabled
+          checked
         />
         {{ item.color }}</span
       >
@@ -26,7 +28,7 @@
                 "
                 >-</span
               >
-              <input id="{{ item._id + itm }}" type="text" value="0" />
+              <input id="{{ item._id + itm }}" readonly type="text" value="0" />
               <span
                 class="plus"
                 (click)="addItem(item._id + itm, data.product, item, itm, size)"

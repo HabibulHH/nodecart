@@ -1,5 +1,4 @@
-import { Variants } from './../models/Products';
-import { DataStoreService } from '../data-store.service';
+import { DataStoreService } from '../../app/services/data-store.service';
 import { Component, OnInit , Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CartService } from '../services/cart.service';
@@ -29,14 +28,11 @@ export class ModalComponent implements OnInit {
   
   removeItem(value,product,variants,size){
 
-     let inputValue = document.getElementById(value).value;
+     let inputValue = document.getElementById(value).value || 0;
      if(product.available){
       let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
       document.getElementById(value).value = updatedCount;
       localStorage.setItem(variants._id,updatedCount);
-
-     // this.dataStore.cartItemCounter.emit(updatedCount);
-
       let customVarId = variants._id+'pro'+size;
       this.cartService.RemoveItemFromCart.emit({
         variant_id : customVarId ,
@@ -55,14 +51,13 @@ export class ModalComponent implements OnInit {
     //console.log(takenItemCount,'from local storage');
     
     if(product.available){
-    let inputValue = document.getElementById(value).value;
+    let inputValue = document.getElementById(value).value || 0;
     if(parseInt(takenItemCount)< parseInt(variants.quantity ))
     {
       let updatedCount = parseInt(inputValue)>=0? parseInt(inputValue)+ 1: 0;
       document.getElementById(value).value = updatedCount;
       localStorage.setItem(variants._id ,updatedCount);
-      
-      //this.dataStore.cartItemCounter.emit(updatedCount);
+
       let customVarId = variants._id+'pro'+size;
       this.cartService.AddItemToCart.emit({
         variant_id : customVarId ,
