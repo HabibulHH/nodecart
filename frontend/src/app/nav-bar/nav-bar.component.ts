@@ -15,6 +15,7 @@ export class NavBarComponent implements OnInit {
     this.dataStoreService.cartItemCounter
     .pipe()
     .subscribe(count => {
+      if(this.totalCount >0)
         this.totalCount =  this.totalCount+count;
       }
     );
