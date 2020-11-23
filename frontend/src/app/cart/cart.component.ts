@@ -1,6 +1,8 @@
 import { CartService } from './../services/cart.service';
 import { DataStoreService } from './../services/data-store.service';
 import { Component, OnInit} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -8,7 +10,10 @@ import { Component, OnInit} from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService: CartService,private dataStoreService: DataStoreService){}
+  constructor(private cartService: CartService,
+    private dataStoreService: DataStoreService,
+    private router:Router
+    ){}
    selectedProducts : Array<object> = [];
    selectedVariants: Array<object> = [];
   ngOnInit() {
@@ -44,5 +49,8 @@ export class CartComponent implements OnInit {
    clear(){
      localStorage.clear();
      location.reload();
+   }
+   goToCheckout(){
+     this.router.navigate(['/checkout'])
    }
 }

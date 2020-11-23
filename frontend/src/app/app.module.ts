@@ -14,6 +14,7 @@ import { ModalComponent } from './cart-modal/cart-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog'
 import { FormsModule } from '@angular/forms';
+import { CheckoutComponent } from './checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     ProductListComponent,
     CartComponent,
     ModalComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { FormsModule } from '@angular/forms';
       {path :'cart',component:CartComponent},
       {path :'product-details',component:ProductDetailsComponent},
       {path :'products',component:ProductListComponent},
+      {path :'checkout',component:CheckoutComponent},
   
   ]),
     BrowserAnimationsModule
