@@ -1,7 +1,6 @@
-import { DataStoreService } from './../data-store.service';
 import { CartService } from './../services/cart.service';
-import { Variants } from './../models/Products';
-import { Component, OnInit , Inject} from '@angular/core';
+import { DataStoreService } from './../services/data-store.service';
+import { Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',

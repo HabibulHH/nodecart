@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStoreService } from '../data-store.service';
+import { DataStoreService } from '../../app/services/data-store.service';
 
 @Component({
   selector: 'nav-bar',
