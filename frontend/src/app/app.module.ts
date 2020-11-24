@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { APP_ROUTES } from './app.route';
 import { LayoutComponent } from './dashboard/layout/layout.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,16 +38,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
     HttpClientModule,
     MatDialogModule,
     FormsModule,
+    ReactiveFormsModule,
     DashboardModule,
     RouterModule.forRoot(APP_ROUTES),
-  //   RouterModule.forRoot(
-  //     [{path :'',component:LoginComponent},
-  //     {path :'cart',component:CartComponent},
-  //     {path :'product-details',component:ProductDetailsComponent},
-  //     {path :'products',component:ProductListComponent},
-  //     {path :'checkout',component:CheckoutComponent},
-  
-  // ]),
     BrowserAnimationsModule
   ],
   providers: [],

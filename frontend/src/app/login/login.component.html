@@ -8,75 +8,103 @@
       alt="Picture by Autumn Studio"
       class="box__image"
     />
-    <div class="form form--register">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="form form--register"
+    >
       <h1 class="form__title">Sign up</h1>
 
       <div class="form__helper">
         <input
           type="text"
-          name="user"
-          [(ngModel)]="name"
           placeholder="First name"
           class="form__input"
+          required
+          formControlName="name"
         />
-        <label class="form__label" for="new-user">User</label>
+
+        <label class="form__label" for="new-user">First Name</label>
+        <div *ngIf="submitted && f.name.errors" class="error">
+          <div *ngIf="f.name.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="error">
+        {{ userError }}
       </div>
       <div class="form__helper">
         <input
           type="text"
           name="user_last"
-          [(ngModel)]="last_name"
           placeholder="Last Name"
           class="form__input"
+          formControlName="last_name"
         />
-        <label class="form__label" for="new-user">User</label>
+        <label class="form__label" for="new-user">Last name</label>
+        <div *ngIf="submitted && f.last_name.errors" class="error">
+          <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+        </div>
       </div>
       <div class="form__helper">
         <input
           type="email"
           name="email"
-          [(ngModel)]="email"
           id="email"
           placeholder="Email"
           class="form__input"
+          formControlName="email"
         />
         <label class="form__label" for="email">Email</label>
+        <div *ngIf="submitted && f.email.errors" class="error">
+          <div *ngIf="f.email.errors.required">email is required</div>
+        </div>
       </div>
 
       <div class="form__helper">
         <input
           type="password"
           name="password"
-          [(ngModel)]="password"
           id="new-user-password"
           placeholder="Password"
           class="form__input"
+          formControlName="password"
         />
         <label class="form__label" for="new-user-password">Password</label>
+        <div *ngIf="submitted && f.password.errors" class="error">
+          <div *ngIf="f.password.errors.required">password is required</div>
+        </div>
       </div>
 
       <div class="form__helper">
         <input
           type="password"
           name="password"
-          [(ngModel)]="cpassword"
           id="confirm-password"
           Placeholder="Confirm password"
           class="form__input"
+          formControlName="confirmPassword"
+          [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
         />
         <label class="form__label" for="confirm-password"
           >Confirm password</label
         >
+        <div *ngIf="submitted && f.confirmPassword.errors" class="error">
+          <div *ngIf="f.confirmPassword.errors.required">
+            Confirm Password is required
+          </div>
+          <div *ngIf="f.confirmPassword.errors.mustMatch">
+            Passwords must match
+          </div>
+        </div>
       </div>
 
-      <button class="form__button" (click)="register()">Register</button>
+      <button type="submit" class="form__button">Register</button>
 
       <p class="form__text">
         Already have an account?
         <label for="toggle" class="form__link">Sign in!</label>
       </p>
-    </div>
-
+    </form>
     <div class="form form--login" action="">
       <h1 class="form__title">Sign in</h1>
 
