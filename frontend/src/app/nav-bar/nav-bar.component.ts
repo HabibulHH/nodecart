@@ -18,6 +18,8 @@ export class NavBarComponent implements OnInit {
     .pipe()
     .subscribe(count => {
       if(this.totalCount >0)
+       console.log('klk');
+       
         this.totalCount =  this.totalCount+count;
       }
     );

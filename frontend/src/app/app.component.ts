@@ -7,10 +7,5 @@ import { HostListener, Component } from '@angular/core';
 })
 export class AppComponent {
 
-  @HostListener('window:beforeunload') goToPage() {
-    //this.router.navigate(['/hello']);
-    localStorage.clear();
-    
-  }
   title = 'E-Com';
 }
