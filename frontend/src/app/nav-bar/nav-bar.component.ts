@@ -23,7 +23,6 @@ export class NavBarComponent implements OnInit {
     );
   }
   logOut(){
-    alert('Hahah removed');
     this.loginService.logOut();
   }
 

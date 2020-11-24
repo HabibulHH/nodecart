@@ -39,14 +39,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     FormsModule,
     DashboardModule,
     RouterModule.forRoot(APP_ROUTES),
-  //   RouterModule.forRoot(
-  //     [{path :'',component:LoginComponent},
-  //     {path :'cart',component:CartComponent},
-  //     {path :'product-details',component:ProductDetailsComponent},
-  //     {path :'products',component:ProductListComponent},
-  //     {path :'checkout',component:CheckoutComponent},
-  
-  // ]),
     BrowserAnimationsModule
   ],
   providers: [],
