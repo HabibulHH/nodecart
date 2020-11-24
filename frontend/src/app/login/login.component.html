@@ -15,27 +15,27 @@
         <input
           type="text"
           name="user"
-          [(ngModel)]="name"
+          [(ngModel)]="user.name"
           placeholder="First name"
           class="form__input"
         />
-        <label class="form__label" for="new-user">User</label>
+        <label class="form__label" for="new-user">First Name</label>
       </div>
       <div class="form__helper">
         <input
           type="text"
           name="user_last"
-          [(ngModel)]="last_name"
+          [(ngModel)]="user.last_name"
           placeholder="Last Name"
           class="form__input"
         />
-        <label class="form__label" for="new-user">User</label>
+        <label class="form__label" for="new-user">Last name</label>
       </div>
       <div class="form__helper">
         <input
           type="email"
           name="email"
-          [(ngModel)]="email"
+          [(ngModel)]="user.email"
           id="email"
           placeholder="Email"
           class="form__input"
@@ -47,7 +47,7 @@
         <input
           type="password"
           name="password"
-          [(ngModel)]="password"
+          [(ngModel)]="user.password"
           id="new-user-password"
           placeholder="Password"
           class="form__input"
