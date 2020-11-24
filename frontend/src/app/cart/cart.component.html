@@ -9,14 +9,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of selectedProducts">
+        <tr
+          *ngFor="let product of selectedProducts"
+          (click)="openDialog(product.product)"
+        >
           <td>{{ product.name }} - {{ product.size }} - {{ product.color }}</td>
           <td>{{ product.updatedCount }}</td>
           <td>${{ product.price }}</td>
         </tr>
       </tbody>
     </table>
-    <button (click)="goToCheckout()" type="button" class="btn btn-primary btn-block custom-button">
+    <button
+      (click)="goToCheckout()"
+      type="button"
+      class="btn btn-primary btn-block custom-button"
+    >
       Go To Checkout
     </button>
     <button

@@ -2,6 +2,8 @@ import { CartService } from './../services/cart.service';
 import { DataStoreService } from './../services/data-store.service';
 import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ModalComponent } from './../cart-modal/cart-modal.component';
+import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
@@ -12,7 +14,8 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService,
     private dataStoreService: DataStoreService,
-    private router:Router
+    private router:Router,
+    public dialog: MatDialog
     ){}
    selectedProducts : Array<object> = [];
    selectedVariants: Array<object> = [];
@@ -53,4 +56,12 @@ export class CartComponent implements OnInit {
    goToCheckout(){
      this.router.navigate(['/checkout'])
    }
+   openDialog(product) {
+    
+    this.dialog.open(ModalComponent, {
+      data: {
+       product:  product
+      }
+    });
+  }
 }

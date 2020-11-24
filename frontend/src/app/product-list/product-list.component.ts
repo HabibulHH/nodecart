@@ -1,8 +1,7 @@
-import { Product, Variants } from './../models/Products';
 import { ModalComponent } from './../cart-modal/cart-modal.component';
+import {MatDialog} from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../app/services/product.service";
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({
@@ -22,7 +21,7 @@ export class ProductListComponent implements OnInit {
     })  
   }
   openDialog(product) {
-    //localStorage.clear();
+    
     this.dialog.open(ModalComponent, {
       data: {
        product:  product

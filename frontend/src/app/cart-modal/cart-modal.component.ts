@@ -66,7 +66,8 @@ export class ModalComponent implements OnInit {
         color:variants.color,
         size : size, 
         name:product.name, 
-        price: product.price
+        price: product.price,
+        product: product
       });
     }else
       alert('Product Is not available');
