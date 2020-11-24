@@ -12,6 +12,7 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "jsonwebtoken": "*",
+    "jwt-decode": "^3.1.2",
     "mongodb": "*",
     "mongojs": "^3.1.0",
     "mongoose": "^5.10.15",

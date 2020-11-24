@@ -1,5 +1,7 @@
+import { LoginService } from './../login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../../app/services/data-store.service';
+
 
 @Component({
   selector: 'nav-bar',
@@ -9,7 +11,7 @@ import { DataStoreService } from '../../app/services/data-store.service';
 export class NavBarComponent implements OnInit {
 
   totalCount = 0;
-  constructor(private dataStoreService:DataStoreService) { }
+  constructor(private dataStoreService:DataStoreService,private loginService: LoginService) { }
 
   ngOnInit() {
     this.dataStoreService.cartItemCounter
@@ -19,6 +21,10 @@ export class NavBarComponent implements OnInit {
         this.totalCount =  this.totalCount+count;
       }
     );
+  }
+  logOut(){
+    alert('Hahah removed');
+    this.loginService.logOut();
   }
 
 }

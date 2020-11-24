@@ -1,7 +1,7 @@
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,9 +12,12 @@ import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './cart-modal/cart-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog'
-import { FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { APP_ROUTES } from './app.route';
+import { LayoutComponent } from './dashboard/layout/layout.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CartComponent,
     ModalComponent,
     CheckoutComponent,
+    PageNotFoundComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,14 +37,16 @@ import { CheckoutComponent } from './checkout/checkout.component';
     HttpClientModule,
     MatDialogModule,
     FormsModule,
-    RouterModule.forRoot(
-      [{path :'',component:LoginComponent},
-      {path :'cart',component:CartComponent},
-      {path :'product-details',component:ProductDetailsComponent},
-      {path :'products',component:ProductListComponent},
-      {path :'checkout',component:CheckoutComponent},
+    DashboardModule,
+    RouterModule.forRoot(APP_ROUTES),
+  //   RouterModule.forRoot(
+  //     [{path :'',component:LoginComponent},
+  //     {path :'cart',component:CartComponent},
+  //     {path :'product-details',component:ProductDetailsComponent},
+  //     {path :'products',component:ProductListComponent},
+  //     {path :'checkout',component:CheckoutComponent},
   
-  ]),
+  // ]),
     BrowserAnimationsModule
   ],
   providers: [],
