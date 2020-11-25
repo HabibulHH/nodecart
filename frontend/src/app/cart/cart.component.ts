@@ -56,11 +56,8 @@ export class CartComponent implements OnInit {
     location.reload();
    }
    goToCheckout(products){
-
-    const navigationExtras: NavigationExtras = {
-      state:{products}
-    };
-     this.cartService.SendSelectionTocheckout.emit(this.selectedProducts);
+     localStorage.setItem('products',JSON.stringify(this.selectedProducts));
+     if(this.selectedProducts.length>0)
      this.router.navigate(['/checkout']);
      
    }
@@ -71,8 +68,6 @@ export class CartComponent implements OnInit {
       variants.row_id = input_id;
     }
    
-    
-    console.log(variants,'.................');
     this.dialog.open(ModalComponent, {
       data: {
        product:  product,

@@ -8,7 +8,7 @@ import { promise } from 'protractor';
 })
 export class CheckoutService {
 
-  private checkout_api = "http://localhost:4006/checkout";
+  private checkout_api = "http://localhost:4007/checkout";
 
 
   constructor(private httpClient: HttpClient,private cartServices:CartService) { 
