@@ -9,4 +9,6 @@ export class CartService {
 
   public AddItemToCart: EventEmitter<any> = new EventEmitter<any>();
   public RemoveItemFromCart: EventEmitter<any> = new EventEmitter<any>();
+  public ShowBill: EventEmitter<any> = new EventEmitter<any>();
+  public SendSelectionTocheckout: EventEmitter<any> = new EventEmitter<any>();
 }

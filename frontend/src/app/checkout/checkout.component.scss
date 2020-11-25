@@ -3,3 +3,22 @@
   align-items: center;
   justify-content: center
 }
+
+HTML SCSSResult
+// 💡 How to create text gradients in CSS
+// 🔗 https://codyhouse.co/nuggets/text-gradients
+
+.text-gradient {
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center;
+  
+  background: linear-gradient(to right, darkblue, darkorchid); // create bg gradient
+  color: transparent; // hide text fill
+  background-clip: text; // use text as clipping mask for bg
+
+  &::selection {
+    color: white;
+    background: darkorchid;
+  }
+}

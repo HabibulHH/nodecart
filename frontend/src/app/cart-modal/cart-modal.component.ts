@@ -28,7 +28,7 @@ export class ModalComponent implements OnInit {
   
   removeItem(value,product,variants,size){
     console.log(value,'It should return custom value with size');
-     let inputValue = document.getElementById(value).value || '0';
+     let inputValue = document.getElementById(value).value || 0;
      if(product.available){
       let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
       document.getElementById(value).value = updatedCount;

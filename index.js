@@ -6,7 +6,7 @@ const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 require("./db/mongoConnect");
 
-const port = 4006;
+const port = 4007;
 
 const app = express();
 
