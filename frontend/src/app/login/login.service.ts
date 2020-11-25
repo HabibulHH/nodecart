@@ -8,8 +8,8 @@ import decode from 'jwt-decode';
 export class LoginService {
 
 
-  private register_api = "http://localhost:4006/register";
-  private login_api = "http://localhost:4006/login";
+  private register_api = "http://localhost:4007/register";
+  private login_api = "http://localhost:4007/login";
 
   constructor(private httpClient: HttpClient, private router: Router ) { }
 

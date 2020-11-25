@@ -5,7 +5,7 @@ import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModalComponent } from './../cart-modal/cart-modal.component';
 import {MatDialog} from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -55,24 +55,19 @@ export class CartComponent implements OnInit {
     this.selectedProducts.map(item =>  localStorage.removeItem(item.v_id) );
     location.reload();
    }
-   goToCheckout(){
-     this.router.navigate(['/checkout'])
+   goToCheckout(products){
+     localStorage.setItem('products',JSON.stringify(this.selectedProducts));
+     if(this.selectedProducts.length>0)
+     this.router.navigate(['/checkout']);
+     
    }
    openDialog(product,input_count,input_id) {
- 
-    
     let variants = product.variants.find(item => input_id.includes(item._id));
-    if(variants){
-      console.log(input_count,'.................');
-      console.log(variants);
-    
-      
+    if(variants){  
       variants[input_id] = input_count;
       variants.row_id = input_id;
     }
    
-    
-    console.log(variants,'.................');
     this.dialog.open(ModalComponent, {
       data: {
        product:  product,
