@@ -1,4 +1,5 @@
 const express = require("express");
+const { Long } = require("mongodb");
 const Product = require("../models/product");
 
 const router = new express.Router();
@@ -33,7 +34,7 @@ router.put("/delete", async (req, res) => {
 });
 
 /**
- * Responsible to create a product
+ * Responsible to checkout product
  */
 router.post("/checkout", async (req, res) => {
   const products = req.body;
@@ -41,8 +42,16 @@ router.post("/checkout", async (req, res) => {
 
   products.map((item) => {
     totalPrice = totalPrice + item.updatedCount * item.price;
+    try {
+      Product.findOneAndUpdate(
+        { variants: { _id: item.v_id } },
+        { quantity: item.updatedCount }
+      );
+    } catch (ex) {
+      console.log(ex);
+    }
   });
-  console.log(products);
+
   try {
     res
       .status(201)
