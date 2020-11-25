@@ -28,7 +28,14 @@
                 "
                 >-</span
               >
-              <input id="{{ item._id + itm }}" readonly type="text" value="0" />
+              <input
+                id="{{ item._id + itm }}"
+                readonly
+                type="text"
+                value="{{
+                  item.row_id == item._id + itm ? item[item._id + itm] : 0
+                }}"
+              />
               <span
                 class="plus"
                 (click)="addItem(item._id + itm, data.product, item, itm, size)"

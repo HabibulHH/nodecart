@@ -12,7 +12,22 @@
         <tr *ngFor="let product of selectedProducts">
           <td>{{ product.name }} - {{ product.size }} - {{ product.color }}</td>
           <td>{{ product.updatedCount }}</td>
-          <td>${{ product.price }}</td>
+          <td>
+            ${{ product.price }}
+            <button
+
+              (click)="
+                openDialog(
+                  product.product,
+                  product.updatedCount,
+                  product.input_id
+                )
+              "
+              class="btn btn-primary edit-button"
+            >
+              edit
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

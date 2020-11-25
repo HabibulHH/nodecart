@@ -27,7 +27,7 @@ export class ModalComponent implements OnInit {
   }
   
   removeItem(value,product,variants,size){
-
+    console.log(value,'It should return custom value with size');
      let inputValue = document.getElementById(value).value || '0';
      if(product.available){
       let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
@@ -38,6 +38,7 @@ export class ModalComponent implements OnInit {
         variant_id : customVarId ,
         product_id : product._id, 
         updatedCount:updatedCount,
+        input_id:value
       });
      }
      else{
@@ -67,7 +68,8 @@ export class ModalComponent implements OnInit {
         name:product.name, 
         price: product.price,
         product: product,
-        v_id: variants._id
+        v_id: variants._id,
+        input_id:value
       });
     }else
       alert('Product Is not available');

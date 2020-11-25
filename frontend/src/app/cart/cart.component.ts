@@ -50,6 +50,7 @@ export class CartComponent implements OnInit {
         }
       );
    }
+
    clear(){
     this.selectedProducts.map(item =>  localStorage.removeItem(item.v_id) );
     location.reload();
@@ -57,11 +58,26 @@ export class CartComponent implements OnInit {
    goToCheckout(){
      this.router.navigate(['/dashboard/checkout'])
    }
-   openDialog(product) {
+   openDialog(product,input_count,input_id) {
+ 
     
+    let variants = product.variants.find(item => input_id.includes(item._id));
+    if(variants){
+      console.log(input_count,'.................');
+      console.log(variants);
+    
+      
+      variants[input_id] = input_count;
+      variants.row_id = input_id;
+    }
+   
+    
+    console.log(variants,'.................');
     this.dialog.open(ModalComponent, {
       data: {
-       product:  product
+       product:  product,
+       input_value: input_count,
+       input_id : input_id
       }
     });
   }
