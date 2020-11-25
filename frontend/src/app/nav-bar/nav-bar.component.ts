@@ -17,10 +17,11 @@ export class NavBarComponent implements OnInit {
     this.dataStoreService.cartItemCounter
     .pipe()
     .subscribe(count => {
-      if(this.totalCount >0)
-       console.log('klk');
-       
-        this.totalCount =  this.totalCount+count;
+      if(this.totalCount >0) 
+       console.log('added');
+       console.log('added');
+       this.totalCount =  this.totalCount+count;
+       if(this.totalCount < 0) this.totalCount =0;
       }
     );
   }

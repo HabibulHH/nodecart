@@ -1,7 +1,10 @@
+import { Variants } from './../models/Products';
 import { CartService } from './../services/cart.service';
 import { DataStoreService } from './../services/data-store.service';
 import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ModalComponent } from './../cart-modal/cart-modal.component';
+import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
@@ -12,7 +15,8 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService,
     private dataStoreService: DataStoreService,
-    private router:Router
+    private router:Router,
+    public dialog: MatDialog
     ){}
    selectedProducts : Array<object> = [];
    selectedVariants: Array<object> = [];
@@ -46,11 +50,35 @@ export class CartComponent implements OnInit {
         }
       );
    }
+
    clear(){
-     localStorage.clear();
-     location.reload();
+    this.selectedProducts.map(item =>  localStorage.removeItem(item.v_id) );
+    location.reload();
    }
    goToCheckout(){
      this.router.navigate(['/checkout'])
    }
+   openDialog(product,input_count,input_id) {
+ 
+    
+    let variants = product.variants.find(item => input_id.includes(item._id));
+    if(variants){
+      console.log(input_count,'.................');
+      console.log(variants);
+    
+      
+      variants[input_id] = input_count;
+      variants.row_id = input_id;
+    }
+   
+    
+    console.log(variants,'.................');
+    this.dialog.open(ModalComponent, {
+      data: {
+       product:  product,
+       input_value: input_count,
+       input_id : input_id
+      }
+    });
+  }
 }

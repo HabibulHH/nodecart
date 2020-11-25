@@ -14,3 +14,10 @@ table .thead-dark th {
   background-color: #4cb77b;
   border-color: #ffffff;
 }
+.edit-button{
+    font-size: 7px;
+    background: transparent;
+    border-block-end: revert;
+    cursor: pointer;
+    color: black;
+}

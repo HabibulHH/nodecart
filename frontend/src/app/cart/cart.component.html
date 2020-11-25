@@ -12,11 +12,30 @@
         <tr *ngFor="let product of selectedProducts">
           <td>{{ product.name }} - {{ product.size }} - {{ product.color }}</td>
           <td>{{ product.updatedCount }}</td>
-          <td>${{ product.price }}</td>
+          <td>
+            ${{ product.price }}
+            <button
+
+              (click)="
+                openDialog(
+                  product.product,
+                  product.updatedCount,
+                  product.input_id
+                )
+              "
+              class="btn btn-primary edit-button"
+            >
+              edit
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
-    <button (click)="goToCheckout()" type="button" class="btn btn-primary btn-block custom-button">
+    <button
+      (click)="goToCheckout()"
+      type="button"
+      class="btn btn-primary btn-block custom-button"
+    >
       Go To Checkout
     </button>
     <button
