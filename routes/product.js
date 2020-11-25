@@ -32,4 +32,16 @@ router.put("/delete", async (req, res) => {
   res.status(201).send({ message: "All Product Deleted" });
 });
 
+/**
+ * Responsible to create a product
+ */
+router.post("/checkout", async (req, res) => {
+  const product = req.body;
+  try {
+    res.status(201).send({ message: "Product Calculated" });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 module.exports = router;
