@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
     location.reload();
    }
    goToCheckout(){
-     this.router.navigate(['/dashboard/checkout'])
+     this.router.navigate(['/checkout'])
    }
    openDialog(product,input_count,input_id) {
  
