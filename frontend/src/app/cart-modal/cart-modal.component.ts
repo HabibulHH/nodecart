@@ -28,7 +28,7 @@ export class ModalComponent implements OnInit {
   
   removeItem(value,product,variants,size){
 
-     let inputValue = document.getElementById(value).value || 0;
+     let inputValue = document.getElementById(value).value || '0';
      if(product.available){
       let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
       document.getElementById(value).value = updatedCount;
@@ -47,8 +47,7 @@ export class ModalComponent implements OnInit {
   }
 
   addItem(value,product,variants,size){
-    let takenItemCount = localStorage.getItem(variants._id) || 0;
-    //console.log(takenItemCount,'from local storage');
+    let takenItemCount = localStorage.getItem(variants._id) || '0';
     
     if(product.available){
     let inputValue = document.getElementById(value).value || 0;
@@ -67,7 +66,8 @@ export class ModalComponent implements OnInit {
         size : size, 
         name:product.name, 
         price: product.price,
-        product: product
+        product: product,
+        v_id: variants._id
       });
     }else
       alert('Product Is not available');

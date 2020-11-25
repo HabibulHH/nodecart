@@ -1,3 +1,4 @@
+import { Variants } from './../models/Products';
 import { CartService } from './../services/cart.service';
 import { DataStoreService } from './../services/data-store.service';
 import { Component, OnInit} from '@angular/core';
@@ -50,11 +51,11 @@ export class CartComponent implements OnInit {
       );
    }
    clear(){
-     localStorage.clear();
-     location.reload();
+    this.selectedProducts.map(item =>  localStorage.removeItem(item.v_id) );
+    location.reload();
    }
    goToCheckout(){
-     this.router.navigate(['/checkout'])
+     this.router.navigate(['/dashboard/checkout'])
    }
    openDialog(product) {
     

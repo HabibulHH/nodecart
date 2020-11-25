@@ -9,10 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          *ngFor="let product of selectedProducts"
-          (click)="openDialog(product.product)"
-        >
+        <tr *ngFor="let product of selectedProducts">
           <td>{{ product.name }} - {{ product.size }} - {{ product.color }}</td>
           <td>{{ product.updatedCount }}</td>
           <td>${{ product.price }}</td>
