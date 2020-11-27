@@ -19,6 +19,7 @@ import { APP_ROUTES } from './app.route';
 import { LayoutComponent } from './dashboard/layout/layout.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditCartModalComponent } from './edit-cart-modal/edit-cart-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CheckoutComponent,
     PageNotFoundComponent,
     LayoutComponent,
+    EditCartModalComponent,
   ],
   imports: [
     BrowserModule,

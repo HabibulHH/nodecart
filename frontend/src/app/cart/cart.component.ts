@@ -18,8 +18,8 @@ export class CartComponent implements OnInit {
     private router:Router,
     public dialog: MatDialog
     ){}
-   selectedProducts : Array<object> = [];
-   selectedVariants: Array<object> = [];
+   selectedProducts : Array<any> = [];
+   selectedVariants: Array<any> = [];
   ngOnInit() {
     this.cartService.AddItemToCart
       .pipe()
@@ -67,7 +67,7 @@ export class CartComponent implements OnInit {
       variants[input_id] = input_count;
       variants.row_id = input_id;
     }
-   
+ 
     this.dialog.open(ModalComponent, {
       data: {
        product:  product,

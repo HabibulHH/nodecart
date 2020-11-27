@@ -26,19 +26,20 @@ export class ModalComponent implements OnInit {
 
   }
   
-  removeItem(value,product,variants,size){
-    console.log(value,'It should return custom value with size');
-     let inputValue = document.getElementById(value).value || 0;
+  removeItem(input_id,product,variants,size){
+     const inputElement: HTMLInputElement = document.getElementById(input_id) as HTMLInputElement
+     const inputValue: string = inputElement.value;
      if(product.available){
       let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
-      document.getElementById(value).value = updatedCount;
-      localStorage.setItem(variants._id,updatedCount);
-      let customVarId = variants._id+'pro'+size;
+      inputElement.value = updatedCount.toString(); 
+      localStorage.setItem(variants._id,updatedCount.toString());
+      let customVarId = variants._id+variants.color+size;
       this.cartService.RemoveItemFromCart.emit({
         variant_id : customVarId ,
         product_id : product._id, 
         updatedCount:updatedCount,
-        input_id:value
+        input_id:input_id,
+        v_id: variants._id,
       });
      }
      else{
@@ -47,31 +48,32 @@ export class ModalComponent implements OnInit {
     
   }
 
-  addItem(value,product,variants,size){
+  addItem(input_id,product,variants,size){
     let takenItemCount = localStorage.getItem(variants._id) || '0';
-    
     if(product.available){
-    let inputValue = document.getElementById(value).value || 0;
-    if(parseInt(takenItemCount)< parseInt(variants.quantity ))
-    {
-      let updatedCount = parseInt(inputValue)>=0? parseInt(inputValue)+ 1: 0;
-      document.getElementById(value).value = updatedCount;
-      localStorage.setItem(variants._id ,updatedCount);
+      const inputElement: HTMLInputElement = document.getElementById(input_id) as HTMLInputElement
+      const inputValue: string = inputElement.value;
+      if(parseInt(takenItemCount)< parseInt(variants.quantity ))
+      {
+        let updatedCount = parseInt(inputValue)>=0? parseInt(inputValue)+ 1: 0;
+        inputElement.value = updatedCount.toString(); 
+        localStorage.setItem(variants._id ,updatedCount.toString());
 
-      let customVarId = variants._id+'pro'+size;
-      this.cartService.AddItemToCart.emit({
-        variant_id : customVarId ,
-        product_id : product._id, 
-        updatedCount:updatedCount,
-        color:variants.color,
-        size : size, 
-        name:product.name, 
-        price: product.price,
-        product: product,
-        v_id: variants._id,
-        input_id:value
-      });
-    }else
+        let customVarId = variants._id+variants.color+size;
+        product.showOnly = true;
+        this.cartService.AddItemToCart.emit({
+          variant_id : customVarId ,
+          product_id : product._id, 
+          updatedCount:updatedCount,
+          color:variants.color,
+          size : size, 
+          name:product.name, 
+          price: product.price,
+          product: product,
+          v_id: variants._id,
+          input_id:input_id
+        });
+      }else
       alert('Product Is not available');
     }
     else{
