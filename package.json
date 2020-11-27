@@ -34,7 +34,8 @@
     "prettier": "^2.1.2"
   },
   "scripts": {
-    "hotload": " nodemon ./index.js localhost 8080"
+    "hotload": " nodemon ./index.js localhost 8080",
+    "seed":" node ./seeders/product.js"
   },
   "repository": {
     "type": "git",
@@ -42,7 +43,7 @@
   },
   "keywords": [
     "cart"
-  ],
+  ], 
   "author": "hira",
   "license": "ISC",
   "bugs": {
