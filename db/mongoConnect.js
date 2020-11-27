@@ -7,7 +7,7 @@ try {
     useFindAndModify: false,
   });
 } catch (ex) {
-  console.log("errors");
+  console.log("errors", ex);
 }
 
 mongoose.connection.on("error", function (err) {

@@ -3,22 +3,15 @@ import { Component, OnInit , Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CartService } from '../services/cart.service';
 
-
-export interface DialogData {
-  color: String,
-  size: [],
-  quantity: Number,
-}
 @Component({
-  selector: 'app-modal',
-  templateUrl: './cart-modal.component.html',
-  styleUrls: ['./cart-modal.component.scss']
+  selector: 'app-edit-cart-modal',
+  templateUrl: './edit-cart-modal.component.html',
+  styleUrls: ['./edit-cart-modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class EditCartModalComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) 
   public data: any, 
-  private dataStore:DataStoreService , 
   private cartService:CartService) {}
 
   
@@ -80,5 +73,5 @@ export class ModalComponent implements OnInit {
       alert("Product is not available");
     }
  }
-}
 
+}
