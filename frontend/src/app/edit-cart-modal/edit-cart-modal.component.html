@@ -1,3 +1,37 @@
-<p>
-  edit-cart-modal works!
-</p>
+<h1 mat-dialog-title class="txt-align">Edit Item Quantity</h1>
+<div mat-dialog-content class="modalcss">
+  <ul class="variants">
+    <li class="name" *ngFor="let item of data.product.variants">
+      <ul class="sizes">
+        <li *ngFor="let itm of item.size">
+          <span *ngIf="item.isVisible && item.row_id == item._id + itm">
+            {{ itm }}
+
+            <div class="number">
+              <span
+                class="minus"
+                (click)="
+                  removeItem(item._id + itm, data.product, item, itm, size)
+                "
+                >-</span
+              >
+              <input
+                id="{{ item._id + itm }}"
+                readonly
+                type="text"
+                value="{{
+                  item.row_id == item._id + itm ? item[item._id + itm] : 0
+                }}"
+              />
+              <span
+                class="plus"
+                (click)="addItem(item._id + itm, data.product, item, itm, size)"
+                >+</span
+              >
+            </div>
+          </span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

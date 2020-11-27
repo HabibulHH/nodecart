@@ -47,6 +47,6 @@ import { EditCartModalComponent } from './edit-cart-modal/edit-cart-modal.compon
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[ModalComponent]
+  entryComponents:[ModalComponent,EditCartModalComponent]
 })
 export class AppModule { }

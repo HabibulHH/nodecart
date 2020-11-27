@@ -1,3 +1,4 @@
+import { EditCartModalComponent } from './../edit-cart-modal/edit-cart-modal.component';
 import { Variants } from './../models/Products';
 import { CartService } from './../services/cart.service';
 import { DataStoreService } from './../services/data-store.service';
@@ -66,9 +67,10 @@ export class CartComponent implements OnInit {
     if(variants){  
       variants[input_id] = input_count;
       variants.row_id = input_id;
+      variants.isVisible = true;
     }
  
-    this.dialog.open(ModalComponent, {
+    this.dialog.open(EditCartModalComponent, {
       data: {
        product:  product,
        input_value: input_count,
