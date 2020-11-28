@@ -31,12 +31,21 @@ Install the dependencies and devDependencies and start the server.
 
 ```sh
 $ start mongodb server [type mongod on terminal use port 27017 as default]
-$ cd nodecard
+$ cd nodecart
 $ npm install --ver
-$ node index.js
+$ npm run seed
 $ cd frontend
 $ npm install --ver
-$ ng serve
+$ cd nodecart
+$ npm run dev
+```
+
+To test the app
+
+```sh
+$ start mongodb server [type mongod on terminal use port 27017 as default]
+$ cd nodecart
+$ npm run test
 ```
 
 ### Development
