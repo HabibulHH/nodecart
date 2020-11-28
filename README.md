@@ -30,7 +30,7 @@ Dillinger requires [Node.js](https://nodejs.org/) 12+ to run.
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ start mongodb server [type mongod on terminal]
+$ start mongodb server [type mongod on terminal use port 27017 as default]
 $ cd nodecard
 $ npm install --ver
 $ node index.js

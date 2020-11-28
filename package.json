@@ -7,7 +7,7 @@
     "bcryptjs": "*",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.3",
-    "concurrently": "*",
+    "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
@@ -39,7 +39,10 @@
   "scripts": {
     "hotload": " nodemon ./index.js localhost 8080",
     "seed": " node ./seeders/product.js",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 10000",
+    "server": "node index.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"" 
   },
   "repository": {
     "type": "git",
