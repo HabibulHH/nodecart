@@ -30,7 +30,8 @@ export class ModalComponent implements OnInit {
      const inputElement: HTMLInputElement = document.getElementById(input_id) as HTMLInputElement
      const inputValue: string = inputElement.value;
      if(product.available){
-      let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: 0;
+      let updatedCount = parseInt(inputValue)>0? parseInt(inputValue) - 1: -1;
+      if(updatedCount < 0) return;
       inputElement.value = updatedCount.toString(); 
       localStorage.setItem(variants._id,updatedCount.toString());
       let customVarId = variants._id+variants.color+size;
