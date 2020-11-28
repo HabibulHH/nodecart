@@ -1,6 +1,8 @@
 .custom-button{
-  background: transparent;
-  color: brown
+  background: #fcfcfc !important;
+  color: #343a3f !important;
+  border: none;
+  height: 45px
 }
 
 table .thead-dark th {
@@ -20,4 +22,27 @@ table .thead-dark th {
     border-block-end: revert;
     cursor: pointer;
     color: black;
+}
+
+.table .thead-dark th{
+  color: #fff;
+  background-color: #f6c824b3;
+  border-color: #454d55;
+}
+
+
+body {
+  background: #e2e1e0;
+  text-align: center;
+}
+
+
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
