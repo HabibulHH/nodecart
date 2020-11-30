@@ -8,6 +8,7 @@ require("./db/mongoConnect");
 
 const port = 4007;
 
+console.log(process.env.NODE_ENV);
 const app = express();
 
 const index = require("./routes/index");
@@ -27,6 +28,8 @@ app.use("/", index);
 app.use(userRouter);
 app.use(productRouter);
 
-app.listen(port, function () {
+app.listen(process.env.NODE_ENV === "test" ? 4008 : port, function () {
   console.log(`Server started...${port}`);
 });
+
+module.exports = app;

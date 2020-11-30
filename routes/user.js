@@ -41,10 +41,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
+/**
+ * to monitor api health
+ * @param req
+ * @param res
+ */
 router.get("/health", async (req, res) => {
   res.send("running");
 });
 
+/**
+ * to get all user
+ * @param req
+ * @param res
+ */
 router.get("/getallusers", async (req, res) => {
   const filter = {};
   const all = await User.find(filter);
