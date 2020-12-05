@@ -28,5 +28,25 @@ export class NavBarComponent implements OnInit {
   logOut(){
     this.loginService.logOut();
   }
+  clear(){
+    let selections =  localStorage.getItem('products');
+    let trimmed = selections.replace(/\\n/g, "\\n")  
+    .replace(/\\'/g, "\\'")
+    .replace(/\\"/g, '\\"')
+    .replace(/\\&/g, "\\&")
+    .replace(/\\r/g, "\\r")
+    .replace(/\\t/g, "\\t")
+    .replace(/\\b/g, "\\b")
+    .replace(/\\f/g, "\\f");
+    trimmed = trimmed.replace(/[\u0000-\u0019]+/g,""); 
+  
+    let cartItems =  JSON.parse(trimmed);
+
+    let   selectedVariants =  cartItems.map(item=> Object.values(item.product.variants));
+    let variantsIdCollection = [];
+     selectedVariants.map(i=> i.map(i=>{variantsIdCollection.push(i._id)}));
+    variantsIdCollection.map(i=> localStorage.removeItem(i));
+    localStorage.removeItem("products");
+  }
 
 }

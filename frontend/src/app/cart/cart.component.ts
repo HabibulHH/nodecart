@@ -35,9 +35,6 @@ export class CartComponent implements OnInit {
             this.selectedProducts.push(data);
           }
           localStorage.setItem('products',JSON.stringify(this.selectedProducts));
-          console.log(localStorage);
-          
-  
         }
       );
 
