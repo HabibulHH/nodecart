@@ -26,6 +26,7 @@ export class CartComponent implements OnInit {
       .pipe()
       .subscribe((data) => {
         this.dataStoreService.cartItemCounter.emit(1);
+      
         let product = this.selectedProducts.find(item => item.variant_id  == data.variant_id );
           if(product){
             product.updatedCount = data.updatedCount;
@@ -33,6 +34,7 @@ export class CartComponent implements OnInit {
           else{
             this.selectedProducts.push(data);
           }
+          localStorage.setItem('products',JSON.stringify(this.selectedProducts));
         }
       );
 
@@ -47,13 +49,16 @@ export class CartComponent implements OnInit {
             }
             else
             product.updatedCount = data.updatedCount = data.updatedCount;
-          } 
+          }
+          localStorage.setItem('products',JSON.stringify(this.selectedProducts)); 
         }
       );
    }
 
+  
    clear(){
     this.selectedProducts.map(item =>  localStorage.removeItem(item.v_id) );
+    localStorage.removeItem("products");
     location.reload();
    }
    goToCheckout(products){
@@ -63,14 +68,17 @@ export class CartComponent implements OnInit {
      
    }
    openDialog(product,input_count,input_id) {
-    let variants = product.variants.find(item => input_id.includes(item._id));
+     console.log("inptu id",input_id);
+     let variant_id  = input_id.slice(0,24);
+    let variants = product.variants.find(item => variant_id == item._id);
+    if(variants.hasOwnProperty('row_id')) delete product.row_id
     if(variants){  
       variants[input_id] = input_count;
       variants.row_id = input_id;
       variants.isVisible = true;
     }
  
-    this.dialog.open(EditCartModalComponent, {
+    this.dialog.open(ModalComponent, {
       data: {
        product:  product,
        input_value: input_count,

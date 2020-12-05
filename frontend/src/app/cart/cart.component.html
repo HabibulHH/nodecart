@@ -2,7 +2,7 @@
   <div class="">
     <table class="table table-borderless">
       <thead class="thead-dark">
-        <tr>
+        <tr class="card-1">
           <th scope="col">Name</th>
           <th scope="col">Unit</th>
           <th scope="col">Price</th>
@@ -15,7 +15,6 @@
           <td>
             ${{ product.price }}
             <button
-
               (click)="
                 openDialog(
                   product.product,
@@ -34,14 +33,14 @@
     <button
       (click)="goToCheckout(selectedProducts)"
       type="button"
-      class="btn btn-primary btn-block custom-button"
+      class="btn btn-primary btn-block custom-button card-1"
     >
       Go To Checkout
     </button>
     <button
       type="button"
       (click)="clear()"
-      class="btn btn-primary btn-block custom-button"
+      class="btn btn-primary btn-block custom-button card-1"
     >
       Clear Cart
     </button>
