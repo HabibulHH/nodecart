@@ -34,7 +34,7 @@ export class CheckoutComponent implements OnInit {
     .replace(/\\f/g, "\\f");
     trimmed = trimmed.replace(/[\u0000-\u0019]+/g,""); 
   
-   console.log(JSON.parse(trimmed),'products');
+  
    this.checkoutServices.checkOutProducts(JSON.parse(trimmed));
    localStorage.removeItem('products');
    this.cartService.ShowBill

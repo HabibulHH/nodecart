@@ -4,28 +4,28 @@
     <li class="name" *ngFor="let item of data.product.variants">
       <ul class="sizes">
         <li *ngFor="let itm of item.size">
-          <span *ngIf="item.isVisible && item.row_id == item._id + itm">
-            {{ itm }}
+          <span *ngIf="item.row_id === item._id +item.color + itm">
+            {{ data.product.name + " "+ item.color +" "+ itm }}
 
             <div class="number">
               <span
                 class="minus"
                 (click)="
-                  removeItem(item._id + itm, data.product, item, itm, size)
+                  removeItem(item._id + item.color + itm, data.product, item, itm, size)
                 "
                 >-</span
               >
               <input
-                id="{{ item._id + itm }}"
+                id="{{ item._id + item.color + itm }}"
                 readonly
                 type="text"
                 value="{{
-                  item.row_id == item._id + itm ? item[item._id + itm] : 0
+                  item.row_id == item._id+ item.color+ itm ? item[item._id + item.color + itm] : 0
                 }}"
               />
               <span
                 class="plus"
-                (click)="addItem(item._id + itm, data.product, item, itm, size)"
+                (click)="addItem(item._id +item.color+ itm, data.product, item, itm, size)"
                 >+</span
               >
             </div>

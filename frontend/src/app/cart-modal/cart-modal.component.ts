@@ -48,6 +48,31 @@ export class ModalComponent implements OnInit {
      }
     
   }
+  getInpuValue(variant,size){
+    const InputId = variant._id + variant.color + size;
+    let selections =  localStorage.getItem('products');
+    if(selections){
+      let cartItems = selections.replace(/\\n/g, "\\n")  
+      .replace(/\\'/g, "\\'")
+      .replace(/\\"/g, '\\"')
+      .replace(/\\&/g, "\\&")
+      .replace(/\\r/g, "\\r")
+      .replace(/\\t/g, "\\t")
+      .replace(/\\b/g, "\\b")
+      .replace(/\\f/g, "\\f");
+      cartItems = cartItems.replace(/[\u0000-\u0019]+/g,""); 
+  
+      let selectedProducts = JSON.parse(cartItems);
+      let product =  selectedProducts.find(item=> item.variant_id === InputId);
+      console.log(product);
+      
+       return product? product.updatedCount : 0;
+    }
+    else{
+          return 0;
+    }
+    
+  }
 
   addItem(input_id,product,variants,size){
     let takenItemCount = localStorage.getItem(variants._id) || '0';
